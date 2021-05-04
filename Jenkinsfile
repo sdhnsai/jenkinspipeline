@@ -31,13 +31,13 @@ stages{
             parallel{
                 stage ('Deploy to Staging'){
                     steps {
-                        sh "scp -i -o StrictHostKeyChecking=no /home/laddu/jenkins.pem **/target/*.war ec2-user@${params.staging}:/home/ec2-user/apache-tomcat-8.5.65/webapps"
+                        sh "scp -v -o StrictHostKeyChecking=no -i /home/laddu/jenkins.pem **/target/*.war ec2-user@${params.staging}:/home/ec2-user/apache-tomcat-8.5.65/webapps"
                     }
                 }
 
                 stage ("Deploy to Production"){
                     steps {
-                        sh "scp -i -o StrictHostKeyChecking=no /home/laddu/jenkins.pem **/target/*.war ec2-user@${params.prod}:/home/ec2-user/apache-tomcat-8.5.65/webapps"
+                        sh "scp -v -o StrictHostKeyChecking=no -i /home/laddu/jenkins.pem **/target/*.war ec2-user@${params.prod}:/home/ec2-user/apache-tomcat-8.5.65/webapps"
                     }
                 }
             }
