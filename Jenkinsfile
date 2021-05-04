@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    tools {
+        maven 'maven'
+        jdk 'jdk'
+    }
 
     parameters {
          string(name: 'staging', defaultValue: '34.219.120.54', description: 'Staging Server')
